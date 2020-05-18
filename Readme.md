@@ -1,6 +1,6 @@
 # Surrogate Generation System
 
-The Surrogate Generation System replaces privacy-sensitive information by synthetically generated surrogates (e.g., a person originally named 'Irene Adler' is renamed to 'Buffy Summers'. For further information see our [paper](http://lml.bas.bg/ranlp2019/proceedings-ranlp-2019.pdf#page=279).
+The Surrogate Generation System replaces privacy-sensitive information by synthetically generated surrogates (e.g., a person originally named 'Irene Adler' is renamed to 'Buffy Summers'. For further information see our [paper](https://www.aclweb.org/anthology/R19-1030/).
 
 ## Usage
 
@@ -44,7 +44,7 @@ Note: We don't handle discontinuous text-bound annotations yet.
 To adapt the Surrogate Generation System to a specific language a language module has to be provided which handles the language-dependent categories (FEMALE, MALE, FAMILY, ORG, STREET, CITY, DATE).
 
 #### German Language Module ([lang/de](SurrogateGeneration/lang/de))
-We implemented a German language module (further described in our [paper](http://lml.bas.bg/ranlp2019/proceedings-ranlp-2019.pdf#page=279)).
+We implemented a German language module (further described in our [paper](https://www.aclweb.org/anthology/R19-1030)).
 
 Requirements:
 - [spacy v2.1.*](https://spacy.io/) with a German model linked via the shortcut 'de' ([How to install](https://spacy.io/usage), [Shortcut link](https://spacy.io/usage/models#usage-link))
@@ -88,13 +88,14 @@ If you use or extend the Surrogate Generation System please cite:
 
 ```
 @inproceedings {Eder19,
-	address = {Shoumen, Bulgaria},
-	booktitle = {Proceedings of the International Conference Recent Advances in Natural Language Processing, RANLP 2019. Varna, Bulgaria, 2-4 September, 2019},
-	pages = {259--269},
-	publisher = {Incoma Ltd.},
-	title = {De-identification of emails: pseudonymizing privacy-sensitive data in a {German} email corpus},
-	year = {2019},
 	author = {Eder, Elisabeth and Krieg-Holz, Ulrike and Hahn, Udo},
-	editor = {Angelova, Galia and Mitkov, Ruslan and Nikolova, Ivelina and Temnikova, Irina}
+	title = {De-identification of emails: pseudonymizing privacy-sensitive data in a {German} email corpus},
+	booktitle = {Proceedings of the International Conference Recent Advances in Natural Language Processing, RANLP 2019. Varna, Bulgaria, 2-4 September, 2019},
+	year = {2019},
+	publisher = {Incoma Ltd.},
+	pages = {259--269},
+	editor = {Angelova, Galia and Mitkov, Ruslan and Nikolova, Ivelina and Temnikova, Irina},
+    url = {https://www.aclweb.org/anthology/R19-1030},
+    doi = {10.26615/978-954-452-056-4_030},
 }
 ```
