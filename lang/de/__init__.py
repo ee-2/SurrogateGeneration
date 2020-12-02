@@ -26,28 +26,28 @@ class German(LangDefaults):
         
         # substitute lists
         # given names
-        self.female = json.load(open(os.path.join(os.path.dirname(__file__), 'subLists', 'female.json'),'r'))
-        self.male = json.load(open(os.path.join(os.path.dirname(__file__), 'subLists', 'male.json'),'r'))
+        self.female = json.load(open(os.path.join(os.path.dirname(__file__), 'subLists', 'female.json'),'r', encoding='utf-8'))
+        self.male = json.load(open(os.path.join(os.path.dirname(__file__), 'subLists', 'male.json'),'r', encoding='utf-8'))
         # family names
-        self.family = json.load(open(os.path.join(os.path.dirname(__file__), 'subLists', 'family.json'),'r'))
+        self.family = json.load(open(os.path.join(os.path.dirname(__file__), 'subLists', 'family.json'),'r', encoding='utf-8'))
         # street names
-        self.street = json.load(open(os.path.join(os.path.dirname(__file__), 'subLists', 'street.json'),'r'))
+        self.street = json.load(open(os.path.join(os.path.dirname(__file__), 'subLists', 'street.json'),'r', encoding='utf-8'))
         # city names (we distinguish by country, only self.city without any country differentiation required)
-        self.citySub = json.load(open(os.path.join(os.path.dirname(__file__), 'subLists', 'city.json'),'r')) 
+        self.citySub = json.load(open(os.path.join(os.path.dirname(__file__), 'subLists', 'city.json'),'r', encoding='utf-8')) 
         self.city = self.citySub['XX'] 
         # city names for look up
-        self.cityLookUp = {country:{k:set(v) for k,v in subList.items()} for country, subList in json.load(open(os.path.join(os.path.dirname(__file__), 'subLists', 'city_rec.json'),'r')).items()}
+        self.cityLookUp = {country:{k:set(v) for k,v in subList.items()} for country, subList in json.load(open(os.path.join(os.path.dirname(__file__), 'subLists', 'city_rec.json'),'r', encoding='utf-8')).items()}
               
         # org names
-        self.org = json.load(open(os.path.join(os.path.dirname(__file__), 'subLists', 'org.json'),'r'))  
+        self.org = json.load(open(os.path.join(os.path.dirname(__file__), 'subLists', 'org.json'),'r', encoding='utf-8'))  
         
         
         '''
         optional
         '''
         # given names with nicknames
-        self.femaleNick = {k:set(v) for k,v in json.load(open(os.path.join(os.path.dirname(__file__), 'subLists', 'female_nick.json'),'r')).items()}
-        self.maleNick = {k:set(v) for k,v in json.load(open(os.path.join(os.path.dirname(__file__), 'subLists', 'male_nick.json'),'r')).items()}
+        self.femaleNick = {k:set(v) for k,v in json.load(open(os.path.join(os.path.dirname(__file__), 'subLists', 'female_nick.json'),'r', encoding='utf-8')).items()}
+        self.maleNick = {k:set(v) for k,v in json.load(open(os.path.join(os.path.dirname(__file__), 'subLists', 'male_nick.json'),'r', encoding='utf-8')).items()}
         
         # frequency dependent first letter mappings (if not set default values are taken)
         self.freqMapFemale = freqMapFemale

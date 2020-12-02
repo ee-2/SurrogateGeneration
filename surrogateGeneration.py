@@ -95,9 +95,9 @@ class SurrogateGeneration:
         fileOutputAnn = os.path.join(self.parameters['settings']['path_output'], os.path.relpath(sgFile.file, self.parameters['settings']['path_input']))
         fileOutputTxt = re.sub('.ann', '.txt', fileOutputAnn)
         os.makedirs(os.path.dirname(fileOutputAnn), exist_ok=True)
-        with open(fileOutputTxt, 'w') as fileOutputTxt:
+        with open(fileOutputTxt, 'w', encoding='utf-8', newline='') as fileOutputTxt:
             fileOutputTxt.write(newText)
-        with open(fileOutputAnn, 'w') as fileOutputAnn:
+        with open(fileOutputAnn, 'w', encoding='utf-8') as fileOutputAnn:
             fileOutputAnn.write(outputAnn.rstrip())
     
     # process files        
@@ -105,7 +105,7 @@ class SurrogateGeneration:
         for file in subset:
             print(file)
             try:
-                with open(re.sub('.ann$', '.txt', file), 'r', encoding='utf-8') as fileInputTxt:
+                with open(re.sub('.ann$', '.txt', file), 'r', encoding='utf-8', newline='') as fileInputTxt:
                     inputTxt = fileInputTxt.read()
                 with open (file, 'r', encoding='utf-8') as fileInputAnn:
                     annos = {}

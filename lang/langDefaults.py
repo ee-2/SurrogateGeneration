@@ -55,37 +55,43 @@ class LangDefaults():
             if re.search('[a-zA-Z]+', token.text):
                 month = datetime.strftime(tokenPars, '%B')
                 for form in self.dateFormatsAlpha:
-                    partsPars = datetime.strftime(tokenPars, form)
-                    idxMonth = [i for i, form in enumerate(self.dateReplMonths[month]) if parts==re.findall('\w+', re.sub(month, form, partsPars))]
-                    if idxMonth:
-                        newMonth = datetime.strftime(newTokenPars, '%B')
-                        if len(self.dateReplMonths[newMonth])>idxMonth[0]:
-                            newPartsPars = re.findall('\w+', re.sub(newMonth, self.dateReplMonths[newMonth][idxMonth[0]], datetime.strftime(newTokenPars, form)))
-                        else:
-                            newPartsPars = re.findall('\w+', re.sub(newMonth, self.dateReplMonths[newMonth][0], datetime.strftime(newTokenPars, form)))
-                        c = 0
-                        for i, part in enumerate(newToken):
-                            if part.isalnum():
-                                newToken[i] = newPartsPars[c]
-                                c+=1                                
-                        newToken = ''.join(newToken)
-                        sgFile.addSpellings(token.text, newToken, token.normCase, self.normalizeTokenCase(newToken), token.label)
-                        return sgFile.sub[token.label][token.text]
+                    try:
+                        partsPars = datetime.strftime(tokenPars, form)
+                        idxMonth = [i for i, form in enumerate(self.dateReplMonths[month]) if parts==re.findall('\w+', re.sub(month, form, partsPars))]
+                        if idxMonth:
+                            newMonth = datetime.strftime(newTokenPars, '%B')
+                            if len(self.dateReplMonths[newMonth])>idxMonth[0]:
+                                newPartsPars = re.findall('\w+', re.sub(newMonth, self.dateReplMonths[newMonth][idxMonth[0]], datetime.strftime(newTokenPars, form)))
+                            else:
+                                newPartsPars = re.findall('\w+', re.sub(newMonth, self.dateReplMonths[newMonth][0], datetime.strftime(newTokenPars, form)))
+                            c = 0
+                            for i, part in enumerate(newToken):
+                                if part.isalnum():
+                                    newToken[i] = newPartsPars[c]
+                                    c+=1                                
+                            newToken = ''.join(newToken)
+                            sgFile.addSpellings(token.text, newToken, token.normCase, self.normalizeTokenCase(newToken), token.label)
+                            return sgFile.sub[token.label][token.text]
+                    except:
+                        continue
                 return self.getRandomDate(sgFile, token)
             else:
                 for form in self.dateFormatsNr:
-                    partsPars = re.findall('\w+', datetime.strftime(tokenPars, form))
-                    if partsPars == parts:
-                        newPartsPars = re.findall('\w+', datetime.strftime(newTokenPars, form))
-                        c = 0
-                        for i, part in enumerate(newToken):
-                            if part.isdigit():
-                                newToken[i] = newPartsPars[c]
-                                c+=1
-                        newToken = ''.join(newToken)
-                        sgFile.sub[token.label][token.text] = newToken
-                        return newToken  
-                return self.getRandomDate(sgFile, token)  
+                    try:
+                        partsPars = re.findall('\w+', datetime.strftime(tokenPars, form))
+                        if partsPars == parts:
+                            newPartsPars = re.findall('\w+', datetime.strftime(newTokenPars, form))
+                            c = 0
+                            for i, part in enumerate(newToken):
+                                if part.isdigit():
+                                    newToken[i] = newPartsPars[c]
+                                    c+=1
+                            newToken = ''.join(newToken)
+                            sgFile.sub[token.label][token.text] = newToken
+                            return newToken  
+                    except:
+                        continue
+                return self.getRandomDate(sgFile, token)
                        
 
     # get surrogate name 
