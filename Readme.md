@@ -47,7 +47,7 @@ To adapt the Surrogate Generation System to a specific language a language modul
 We implemented a German language module (further described in our [paper](https://www.aclweb.org/anthology/R19-1030)).
 
 Requirements:
-- [spacy v2.*](https://spacy.io/) with a German model linked via the shortcut 'de' ([How to install](https://spacy.io/usage), [Shortcut link](https://spacy.io/usage/models#usage-link))
+- [spacy v2.*](https://spacy.io/) with the German model 'de\_core\_news\_sm' ([How to install](https://spacy.io/usage))
 - [Levenshtein](https://github.com/ztane/python-Levenshtein/)
 
 ##### Sources for Substitute Lists
