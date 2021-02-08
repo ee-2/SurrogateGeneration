@@ -6,7 +6,7 @@ spacy tokenizer and parser
 class SpacyNlp:
     
     def __init__(self):
-        self.nlp = spacy.load('de', disable=['ner'])    
+        self.nlp = spacy.load('de_core_news_sm', disable=['ner'])    
     
     # process text with spacy
     def getSpacyDoc(self, sgFile):
