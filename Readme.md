@@ -10,7 +10,7 @@ Then run the system with:
 ```
 python3 main.py
 ```
-The System was tested on Python 3.5 and 3.6. For processing DATEs [python-dateutil](https://pypi.org/project/python-dateutil/) has to be installed.
+The System was tested on Python 3.5, 3.6 and 3.8. For processing DATEs [python-dateutil](https://pypi.org/project/python-dateutil/) has to be installed.
 
 ### Entities
 The following privacy-sensitive categories are currently provided:
@@ -47,7 +47,7 @@ To adapt the Surrogate Generation System to a specific language a language modul
 We implemented a German language module (further described in our [paper](https://www.aclweb.org/anthology/R19-1030)).
 
 Requirements:
-- [spacy v2.*](https://spacy.io/) with the German model 'de\_core\_news\_sm' ([How to install](https://spacy.io/usage))
+- [spacy](https://spacy.io/) with the German model 'de\_core\_news\_sm' ([How to install](https://spacy.io/usage))
 - [Levenshtein](https://github.com/ztane/python-Levenshtein/)
 
 ##### Sources for Substitute Lists

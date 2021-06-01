@@ -84,12 +84,11 @@ class SurrogateGeneration:
         newText = '' 
         begin = 0  
         outputAnn = '' 
-        for i, anno in enumerate(annotations):   
-            token = Entity(anno['text'], anno['label'], anno['start'], anno['end'])
-            sub = self.getSubstitute(sgFile, token)
-            newText+= sgFile.txt[begin:anno['start']] + sub   
-            begin = anno['end']      
-            outputAnn += 'T' + str(i+1) + '\t' + anno['label'] + ' ' + str(len(newText)-len(sub)) + ' ' + str(len(newText)) + '\t' + sub + '\n'
+        for i, token in enumerate(annotations):   
+            sub = self.getSubstitute(sgFile, token) or token.text
+            newText+= sgFile.txt[begin:token.start] + sub   
+            begin = token.end      
+            outputAnn += 'T' + str(i+1) + '\t' + token.label + ' ' + str(len(newText)-len(sub)) + ' ' + str(len(newText)) + '\t' + sub + '\n'
         newText += sgFile.txt[begin:]
         
         fileOutputAnn = os.path.join(self.parameters['settings']['path_output'], os.path.relpath(sgFile.file, self.parameters['settings']['path_input']))
@@ -112,14 +111,10 @@ class SurrogateGeneration:
                     for line in fileInputAnn.readlines():
                         # TODO: handle discontinuous annotations
                         lineSplitted = line.rstrip().split(None, 4)
-                        annos[(int(lineSplitted[2]), int(lineSplitted[3]))] = {'start':int(lineSplitted[2]),
-                                                                               'end':int(lineSplitted[3]),
-                                                                               'label':lineSplitted[1],
-                                                                               'text': lineSplitted[4]}
+                        annos[(int(lineSplitted[2]), int(lineSplitted[3]))] = Entity(lineSplitted[4], lineSplitted[1], int(lineSplitted[2]), int(lineSplitted[3]))
                 sgFile = SgFile(file, threadName, inputTxt, self.lang.freqMapFemale, self.lang.freqMapMale, self.lang.freqMapFamily, self.lang.freqMapOrg, self.lang.freqMapStreet, self.lang.freqMapCity)
                 self.subFile(sgFile, [annos[anno] for anno in sorted(annos)]) 
                 self.nrFiles += 1
             except Exception:
                 print(file + ' not processed:')
                 traceback.print_exc()
-                
