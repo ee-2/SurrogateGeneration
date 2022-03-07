@@ -50,7 +50,7 @@ Requirements:
 - [spacy](https://spacy.io/) with the German model 'de\_core\_news\_sm' ([How to install](https://spacy.io/usage))
 - [Levenshtein](https://github.com/ztane/python-Levenshtein/)
 
-The (large) substitute lists are stored in this repository with [GIT LFS](https://git-lfs.github.com/). Please install it for proper usage of these lists. To reduce the risk of re-identification, we recommend (slightly) modifying the substitute lists and distributional letter-to-letter mappings.
+The (large) substitute lists are stored in this repository with [GIT LFS](https://git-lfs.github.com/). Please install it for proper usage of these lists. To reduce the risk of re-identification, we recommend (slightly) modifying the substitute lists and the distributional letter-to-letter mappings.
 
 ##### Sources for Substitute Lists
 - [female.json](lang/de/subLists/female.json), [male.json](lang/de/subLists/male.json), [female_nick.json](lang/de/subLists/female_nick.json), [male_nick.json](lang/de/subLists/male_nick.json)
