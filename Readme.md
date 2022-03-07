@@ -1,16 +1,16 @@
 # Surrogate Generation System
 
-The Surrogate Generation System replaces privacy-sensitive information by synthetically generated surrogates (e.g., a person originally named 'Irene Adler' is renamed to 'Buffy Summers'. For further information see our [paper](https://www.aclweb.org/anthology/R19-1030/).
+The surrogate generation system replaces privacy-sensitive information by synthetically generated surrogates (e.g., a person originally named 'Irene Adler' is renamed to 'Buffy Summers'. For further information see our [paper](https://www.aclweb.org/anthology/R19-1030/).
 
 ## Usage
 
-To use the Surrogate Generation System first edit the parameters in [param.conf](param.conf).
+To use the surrogate generation system first edit the parameters in [param.conf](param.conf).
 Then run the system with: 
 
 ```
 python3 main.py
 ```
-The System was tested on Python 3.5, 3.6 and 3.8. For processing DATEs [python-dateutil](https://pypi.org/project/python-dateutil/) has to be installed.
+The system was tested on Python 3.5, 3.6 and 3.8. For processing DATEs [python-dateutil](https://pypi.org/project/python-dateutil/) has to be installed.
 
 ### Entities
 The following privacy-sensitive categories are currently provided:
@@ -31,7 +31,7 @@ The following privacy-sensitive categories are currently provided:
 - PHONE (phone and fax numbers)
 
 ### Input Format
-The Surrogate Generation System accepts any type of text with [BRAT](https://brat.nlplab.org/) annotations of the described entities. For each file to process the actual text without modifications ('.txt') and the annotations of the privacy-sensitive entities ('.ann') have to be provided separately. An example for the annotation format (the numbers denote the character offsets of the entities in the txt file): 
+The surrogate generation system accepts any type of text with [BRAT](https://brat.nlplab.org/) annotations of the described entities. For each file to process the actual text without modifications ('.txt') and the annotations of the privacy-sensitive entities ('.ann') have to be provided separately. An example for the annotation format (the numbers denote the character offsets of the entities in the txt file): 
 ```
 T1	FEMALE 6 11	Irene
 T2	CITY 126 132	London
@@ -41,7 +41,7 @@ For more information see the [brat standoff format](https://brat.nlplab.org/stan
 Note: We don't handle discontinuous text-bound annotations yet.
 
 ### Language Modules
-To adapt the Surrogate Generation System to a specific language a language module has to be provided which handles the language-dependent categories (FEMALE, MALE, FAMILY, ORG, STREET, CITY, DATE).
+To adapt the surrogate generation system to a specific language a language module has to be provided which handles the language-dependent categories (FEMALE, MALE, FAMILY, ORG, STREET, CITY, DATE).
 
 #### German Language Module ([lang/de](lang/de))
 We implemented a German language module (further described in our [paper](https://www.aclweb.org/anthology/R19-1030)).
