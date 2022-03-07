@@ -86,7 +86,7 @@ Functions for a different treatment of a specific language-dependent category wi
 
 ## Citation
 
-If you use or extend the Surrogate Generation System please cite:
+If you use or extend the surrogate generation system please cite:
 
 ```
 @inproceedings {Eder19,
