@@ -240,7 +240,7 @@ class German(LangDefaults):
     def _derivateStem(self, sgFile, token, matchSub = '', matchAdj = ''):
         tokenStemNormCase = token.normCase[:len(token.normCase)-len(matchSub)-len(matchAdj)]  
         if tokenStemNormCase in sgFile.sub[token.label]:
-            newToken = sgFile.sub[token.label][token.text[:len(token.text)-len(matchSub)-len(matchAdj)]] or sgFile.sub[token.label][tokenStemNormCase] 
+            newToken = sgFile.sub[token.label].get(token.text[:len(token.text)-len(matchSub)-len(matchAdj)]) or sgFile.sub[token.label][tokenStemNormCase] 
             newToken = self._generateDerivateCity(newToken, token.text[len(token.text)-len(matchSub)-len(matchAdj):len(token.text)-len(matchAdj)], token.text[len(token.text)-len(matchAdj):])
             sgFile.addSpellings(token.text, newToken, token.normCase, newToken, token.label)
             return newToken    
